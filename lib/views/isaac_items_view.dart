@@ -100,17 +100,19 @@ class _IsaacItemsViewState extends State<IsaacItemsView> {
                                     return Card(
                                       margin: const EdgeInsets.all(8.0),
                                       child: ListTile(
-                                        leading: ClipRRect(
-                                          borderRadius: BorderRadius.circular(8),
-                                          child: Image.network(
-                                            item.icon,
-                                            width: 50,
-                                            height: 50,
-                                            fit: BoxFit.cover,
-                                            errorBuilder: (context, error, stackTrace) =>
-                                                const Icon(Icons.error),
-                                          ),
-                                        ),
+                                        leading: item.icon.isEmpty
+                                            ? const Icon(Icons.image_not_supported, size: 50)
+                                            : ClipRRect(
+                                                borderRadius: BorderRadius.circular(8),
+                                                child: Image.network(
+                                                  item.icon,
+                                                  width: 50,
+                                                  height: 50,
+                                                  fit: BoxFit.cover,
+                                                  errorBuilder: (context, error, stackTrace) =>
+                                                      const Icon(Icons.broken_image, size: 50),
+                                                ),
+                                              ),
                                         title: Text(item.name),
                                         subtitle: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
