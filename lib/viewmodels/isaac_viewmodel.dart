@@ -37,10 +37,15 @@ class IsaacViewModel {
     _isLoading = true;
     _error = null;
     try {
-      final List<dynamic> data = json.decode(_mockJson);
-      _items = data.map((json) => IsaacItem.fromJson(json)).toList();
+      final response = await http.get(Uri.parse('https://gist.githubusercontent.com/Djove73/3b41d6025ff2fb233c3e6fb5b8afd4c3/raw/803e4a2bf3870aac2d8c49077eca8c4fd397ff5a/isaac_items_mock.json'));
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        _items = data.map((json) => IsaacItem.fromJson(json)).toList();
+      } else {
+        _error = 'Error al obtener datos de la API: Código ${response.statusCode}';
+      }
     } catch (e) {
-      _error = 'Error loading local data: $e';
+      _error = 'Error de conexión: $e';
     } finally {
       _isLoading = false;
     }
