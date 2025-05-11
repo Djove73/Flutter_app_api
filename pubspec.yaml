@@ -94,4 +94,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "icono_juego.png"
+  image_path: "isaac_icon.png"
