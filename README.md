@@ -11,8 +11,6 @@ Esta aplicación Flutter muestra cómo consumir una API pública y presentar la 
 
 Esta estructura básica puede adaptarse a cualquier API pública y es ideal como ejemplo de buenas prácticas en Flutter para manejo de listas, búsqueda y estados de red.
 
-## Sobre los ítems de Isaac y la API
+## Sobre los ítems de Game y la API
 
-La aplicación utiliza como fuente de datos una API pública relacionada con el videojuego "The Binding of Isaac". Los ítems de Isaac son objetos que el jugador puede encontrar durante la partida y que otorgan diferentes efectos, habilidades o mejoras al personaje principal. Cada ítem tiene un nombre, una descripción, una imagen, una cita y una calidad, entre otros atributos.
-
-La API utilizada permite obtener información detallada de estos ítems, facilitando su visualización y búsqueda dentro de la app. Esto convierte la aplicación en una herramienta útil para jugadores que deseen consultar rápidamente las características de los ítems del juego.
+La aplicación utiliza como fuente de datos una API pública relacionada con videojuegos gratis. Cada elemento tiene un id, titulo, imagen, descripcion corta, genero y plataforma.
