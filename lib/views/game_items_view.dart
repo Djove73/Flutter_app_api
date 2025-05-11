@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../views/game_detail_view.dart';
 import '../viewmodels/game_viewmodel.dart';
 
 class GameItemsView extends StatelessWidget {
@@ -21,6 +22,7 @@ class GameItemsView extends StatelessWidget {
 
             return Column(
               children: [
+                // Campo de busqueda
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -32,6 +34,7 @@ class GameItemsView extends StatelessWidget {
                     onChanged: viewModel.searchGames,
                   ),
                 ),
+                // Lista de juegos o mensaje de error
                 Expanded(
                   child: viewModel.isLoading
                       ? const Center(child: CircularProgressIndicator())
@@ -59,6 +62,14 @@ class GameItemsView extends StatelessWidget {
                                 return Card(
                                   margin: const EdgeInsets.all(8.0),
                                   child: ListTile(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => GameDetailView(game: game),
+                                        ),
+                                      );
+                                    },
                                     leading: Image.network(
                                       game.thumbnail,
                                       width: 50,
