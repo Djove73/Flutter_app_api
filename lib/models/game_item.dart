@@ -6,6 +6,7 @@ class GameItem {
   final String genre;
   final String platform;
 
+//Constructor que obliga a inicializar todos los campos
   GameItem({
     required this.id,
     required this.title,
@@ -15,6 +16,7 @@ class GameItem {
     required this.platform,
   });
 
+//Metodo de fabrica para crear una instancia de GameItem a partir del JSON de la request
   factory GameItem.fromJson(Map<String, dynamic> json) {
     return GameItem(
       id: json['id'] ?? 0,

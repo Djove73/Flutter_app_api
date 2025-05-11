@@ -15,6 +15,7 @@ class GameViewModel extends ChangeNotifier {
   bool get isInitialized => _isInitialized;
   String? get error => _error;
 
+//Metodo para hacer la request a la api
   Future<void> fetchGames() async {
     _isLoading = true;
     _error = null;
@@ -42,6 +43,7 @@ class GameViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+//Metodo para filtrar los juegos segun lo que se ponga en el buscador
   void searchGames(String query) {
     final q = query.toLowerCase();
     _filteredGames
