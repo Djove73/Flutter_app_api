@@ -15,7 +15,7 @@ class GameItemsView extends StatelessWidget {
           title: const Text('Free To Play Games'),
         ),
         body: Container(
-          color: Colors.blue,
+          color: const Color(0xFF36393F), // Discord dark theme background color
           child: Consumer<GameViewModel>(
             builder: (context, viewModel, _) {
               if (!viewModel.isInitialized) {
@@ -28,11 +28,17 @@ class GameItemsView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Search Games',
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(),
+                        labelStyle: const TextStyle(color: Colors.white),
+                        prefixIcon: const Icon(Icons.search, color: Colors.white),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0xFF202225), // Discord dark theme input color
                       ),
+                      style: const TextStyle(color: Colors.white),
                       onChanged: viewModel.searchGames,
                     ),
                   ),
@@ -62,7 +68,7 @@ class GameItemsView extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   final game = viewModel.games[index];
                                   return Card(
-                                    color: Colors.orange,
+                                    color: const Color(0xFF2F3136), // Discord dark theme card color
                                     margin: const EdgeInsets.all(8.0),
                                     child: ListTile(
                                       onTap: () {
@@ -73,21 +79,27 @@ class GameItemsView extends StatelessWidget {
                                           ),
                                         );
                                       },
-                                      leading: Image.network(
-                                        game.thumbnail,
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                        errorBuilder: (context, error, stackTrace) =>
-                                            const Icon(Icons.broken_image),
+                                      leading: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          game.thumbnail,
+                                          width: 50,
+                                          height: 50,
+                                          fit: BoxFit.cover,
+                                          errorBuilder: (context, error, stackTrace) =>
+                                              const Icon(Icons.broken_image, color: Colors.white),
+                                        ),
                                       ),
-                                      title: Text(game.title),
+                                      title: Text(
+                                        game.title,
+                                        style: const TextStyle(color: Colors.white),
+                                      ),
                                       subtitle: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(game.shortDescription),
-                                          Text('Genre: ${game.genre}'),
-                                          Text('Platform: ${game.platform}'),
+                                          Text(game.shortDescription, style: const TextStyle(color: Colors.grey)),
+                                          Text('Genre: ${game.genre}', style: const TextStyle(color: Colors.grey)),
+                                          Text('Platform: ${game.platform}', style: const TextStyle(color: Colors.grey)),
                                         ],
                                       ),
                                     ),
